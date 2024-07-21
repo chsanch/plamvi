@@ -16,7 +16,7 @@ export const aiSchema = z.object({
 		z.object({
 			name: z.string(),
 			description: z.string(),
-			cost: z.number(),
+			cost: z.number().or(z.string()),
 			link: z.string(),
 			image: z.string()
 		})
@@ -29,7 +29,7 @@ export const aiSchema = z.object({
 				z.object({
 					name: z.string(),
 					description: z.string(),
-					cost: z.number(),
+					cost: z.number().or(z.string()),
 					link: z.string(),
 					image: z.string()
 				})
@@ -38,7 +38,7 @@ export const aiSchema = z.object({
 				z.object({
 					name: z.string(),
 					description: z.string(),
-					cost: z.number(),
+					cost: z.number().or(z.string()),
 					link: z.string(),
 					image: z.string()
 				})
