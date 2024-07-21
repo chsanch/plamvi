@@ -4,10 +4,10 @@ class TripResponse {
 	error = $state();
 }
 
-/** 
- *  @param { import('$lib/types').Trip } trip 
+/**
+ *  @param { import('$lib/types').Trip } trip
  *  @returns { import('$lib/types').TripResponseType }
-*/
+ */
 export default function fetchTrip(trip) {
 	const response = new TripResponse();
 
@@ -18,14 +18,13 @@ export default function fetchTrip(trip) {
 
 	async function fetchTripData() {
 		response.isLoading = true;
-
 		try {
 			const res = await fetch('/api/ai', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ trip }),
+				body: JSON.stringify({ trip })
 			});
 
 			response.data = await res.json();

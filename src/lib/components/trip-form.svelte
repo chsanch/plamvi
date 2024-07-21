@@ -6,7 +6,9 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { getTripContext } from '$lib/trip-state.svelte';
 	import { goto } from '$app/navigation';
-    import { v4 as uuidv4 } from 'uuid';
+	import { v4 as uuidv4 } from 'uuid';
+	import DateRangePicker from './date-range-picker.svelte';
+	import { dateRangeToPrompt } from '$lib/utils/dates';
 
 	/** @type {import('$lib/types').SuperValidatedFormSchema} */
 	export let data;
@@ -24,16 +26,23 @@
 	});
 
 	const { form: formData, enhance } = form;
-    /** @type string*/
-    const tripId = uuidv4();
+
+	/** @param {import('bits-ui').DateRange | undefined} dates */
+	function updateDates(dates) {
+		$formData.dates = dateRangeToPrompt(dates);
+	}
+
+	/** @type string*/
+	const tripId = uuidv4();
 </script>
+
 <p>{tripId}</p>
 <form method="POST" use:enhance>
-    <Form.Field {form} name="id">
-        <Form.Control let:attrs>
-			<Input {...attrs} value={tripId} type="hidden"/>
+	<Form.Field {form} name="id">
+		<Form.Control let:attrs>
+			<Input {...attrs} value={tripId} type="hidden" />
 		</Form.Control>
-    </Form.Field>
+	</Form.Field>
 	<Form.Field {form} name="destination">
 		<Form.Control let:attrs>
 			<Form.Label>Destino</Form.Label>
@@ -45,7 +54,8 @@
 	<Form.Field {form} name="dates">
 		<Form.Control let:attrs>
 			<Form.Label>Fecha del viaje</Form.Label>
-			<Input {...attrs} bind:value={$formData.dates} />
+			<DateRangePicker {updateDates} />
+			<input hidden value={$formData.dates} name="dates" />
 		</Form.Control>
 		<Form.Description>Indica las fechas del viaje</Form.Description>
 		<Form.FieldErrors />
