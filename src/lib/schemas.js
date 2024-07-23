@@ -10,28 +10,36 @@ export const tripSchema = z.object({
 });
 
 export const aiSchema = z.object({
-	general_info: z.object({ description: z.string(), images: z.array(z.string()) }),
-	recommendations: z.object({ description: z.string(), links: z.array(z.string()) }),
+	general_info: z.object({
+		destination: z.string(),
+		dates: z.string(),
+		description: z.string(),
+		images: z.array(z.object({ src: z.string(), alt: z.string() }))
+	}),
+	recommendations: z.object({
+		description: z.string(),
+		links: z.array(z.object({ title: z.string(), url: z.string() }))
+	}),
 	hotels: z.array(
 		z.object({
 			name: z.string(),
 			description: z.string(),
 			cost: z.number().or(z.string()),
-			link: z.string(),
-			image: z.string()
+			link: z.string().or(z.null()),
+			image: z.string().or(z.null())
 		})
 	),
 	days: z.array(
 		z.object({
 			date: z.string(),
 			description: z.string(),
-			stops: z.array(
+			activities: z.array(
 				z.object({
 					name: z.string(),
 					description: z.string(),
 					cost: z.number().or(z.string()),
-					link: z.string(),
-					image: z.string()
+					link: z.string().or(z.null()),
+					image: z.string().or(z.null())
 				})
 			),
 			restaurants: z.array(
@@ -39,8 +47,8 @@ export const aiSchema = z.object({
 					name: z.string(),
 					description: z.string(),
 					cost: z.number().or(z.string()),
-					link: z.string(),
-					image: z.string()
+					link: z.string().or(z.null()),
+					image: z.string().or(z.null())
 				})
 			)
 		})
