@@ -6,7 +6,27 @@ const gemini_response = {
 			'Un viaje cultural a Budapest con actividades para niños, combinando turismo, buena comida y diversión.',
 		images: [
 			{
+				src: 'https://images.pexels.com/photos/732057/pexels-photo-732057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
+			},
+			{
+				src: 'https://images.pexels.com/photos/696288/pexels-photo-696288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
+			},
+			{
+				src: 'https://images.pexels.com/photos/774856/pexels-photo-774856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
+			},
+			{
+				src: 'https://images.pexels.com/photos/66191/pexels-photo-66191.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
+			},
+			{
 				src: 'https://images.pexels.com/photos/1640395/pexels-photo-1640395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
+			},
+			{
+				src: 'https://images.pexels.com/photos/1750352/pexels-photo-1750352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 				alt: 'Vista panorámica de Budapest con el río Danubio y el Parlamento húngaro.'
 			}
 		]
@@ -329,219 +349,241 @@ const gemini_response = {
 };
 
 const chatgpt_turbo_response = {
-    "general_info": {
-      "destination": "Budapest",
-      "dates": "19 ago 2024 - 25 ago 2024",
-      "description": "Budapest, la capital de Hungría, es conocida por su rica historia, arquitectura impresionante y vibrante vida cultural. Dividida por el río Danubio, la ciudad ofrece una mezcla fascinante de lo antiguo y lo nuevo, ideal para explorar en familia. Desde el majestuoso Parlamento hasta los relajantes baños termales, Budapest tiene algo para todos.",
-      "images": [
-        {
-          "src": "https://cdn.pixabay.com/photo/2015/03/26/09/54/buildings-690364_1280.jpg",
-          "alt": "Vista panorámica de Budapest"
-        }
-      ]
-    },
-    "recommendations": {
-      "description": "Para un viaje familiar en Budapest que combine cultura, buena comida y diversión, aquí tienes algunas recomendaciones generales.",
-      "links": [
-        {
-          "title": "Información turística oficial de Budapest",
-          "url": "https://www.budapestinfo.hu/"
-        }
-      ]
-    },
-    "hotels": [
-      {
-        "name": "Hotel Palazzo Zichy",
-        "description": "Este hotel de 4 estrellas está ubicado en el centro histórico, cerca de atracciones principales. Ofrece comodidades modernas y es ideal para familias.",
-        "cost": "100 euros por noche",
-        "link": "https://www.hotelpalazzozichy.hu",
-        "image": "https://cdn.pixabay.com/photo/2016/11/29/05/55/adult-1867665_1280.jpg"
-      },
-      {
-        "name": "Ibis Budapest City",
-        "description": "Hotel económico pero cómodo, perfecto para familias que buscan una opción más asequible. Ubicado cerca del transporte público y atracciones principales.",
-        "cost": "60 euros por noche",
-        "link": "https://www.accorhotels.com/gb/hotel-1681-ibis-budapest-city/index.shtml",
-        "image": "https://cdn.pixabay.com/photo/2017/08/10/07/32/ibis-hotel-2619202_1280.jpg"
-      }
-    ],
-    "days": [
-      {
-        "date": "19 de agosto de 2024",
-        "description": "Exploración del distrito del Castillo y paseo por el Danubio.",
-        "activities": [
-          {
-            "name": "Castillo de Buda",
-            "description": "Visita este icónico castillo que ofrece vistas espectaculares de la ciudad y una rica historia. Ideal para enseñar a los niños sobre la historia de Hungría.",
-            "cost": "10 euros por persona",
-            "link": "https://budaicastlebudapest.com/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Crucero por el Danubio",
-            "description": "Disfruta de un relajante crucero por el Danubio, una manera perfecta de ver la ciudad desde otra perspectiva. Especialmente mágico al atardecer.",
-            "cost": "15 euros por persona",
-            "link": "https://www.legenda.hu/en",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Halászbástya Restaurant",
-            "description": "Ubicado cerca del Castillo de Buda, este restaurante ofrece platos húngaros tradicionales con una vista impresionante.",
-            "cost": "25 euros por persona",
-            "link": "https://www.halaszbastya.eu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      },
-      {
-        "date": "20 de agosto de 2024",
-        "description": "Día de museos y parques.",
-        "activities": [
-          {
-            "name": "Museo Nacional Húngaro",
-            "description": "Explora la historia y cultura de Hungría a través de sus exposiciones. Perfecto para un día educativo en familia.",
-            "cost": "8 euros por persona",
-            "link": "http://www.hnm.hu/en",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Parque de la Ciudad (Városliget)",
-            "description": "Visita este amplio parque que ofrece muchas actividades para niños, incluyendo un castillo, un lago para paseos en bote y áreas de juego.",
-            "cost": "Gratis",
-            "link": "https://varosliget.info/en",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Paprika",
-            "description": "Restaurante casual que sirve platos húngaros auténticos, ideal para almorzar después de visitar el museo.",
-            "cost": "20 euros por persona",
-            "link": "https://www.paprikavendeglo.hu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      },
-      {
-        "date": "21 de agosto de 2024",
-        "description": "Exploración de la Isla Margarita y visita a un espectáculo local.",
-        "activities": [
-          {
-            "name": "Isla Margarita",
-            "description": "Un oasis en medio del Danubio, perfecto para un día de relajación en familia. Puedes alquilar bicicletas o simplemente disfrutar de un pícnic.",
-            "cost": "Gratis",
-            "link": "https://welovebudapest.com/en/venue/margaret-island-2/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Espectáculo en el Teatro Nacional de Marionetas",
-            "description": "Disfruta de un espectáculo cultural que fascinará tanto a adultos como a niños. Consulta la programación para elegir una obra adecuada.",
-            "cost": "10 euros por persona",
-            "link": "https://www.budapestpuppet.com/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Robinson Restaurant",
-            "description": "Situado cerca de la Isla Margarita, este restaurante ofrece excelentes opciones para comer al aire libre con vistas al lago.",
-            "cost": "30 euros por persona",
-            "link": "https://www.robinsonrestaurant.hu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      },
-      {
-        "date": "22 de agosto de 2024",
-        "description": "Visita a los baños termales y tarde de compras.",
-        "activities": [
-          {
-            "name": "Baños Széchenyi",
-            "description": "Sumérgete en uno de los baños termales más grandes de Europa, ideal para relajarse después de días de turismo.",
-            "cost": "20 euros por persona",
-            "link": "http://www.szechenyibath.hu/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Andrássy Út",
-            "description": "Disfruta de una tarde de compras en esta avenida famosa por sus tiendas de lujo y arquitectura impresionante.",
-            "cost": "Gratis",
-            "link": "https://www.budapestbylocals.com/andrassy-avenue.html",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Menza",
-            "description": "Restaurante moderno y popular entre locales y turistas, ofrece una variedad de platos húngaros e internacionales.",
-            "cost": "20 euros por persona",
-            "link": "https://www.menzarestaurant.hu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      },
-      {
-        "date": "23 de agosto de 2024",
-        "description": "Día dedicado a la exploración de la historia judía y la vida nocturna.",
-        "activities": [
-          {
-            "name": "Sinagoga de la Calle Dohány",
-            "description": "Visita la sinagoga más grande de Europa y aprende sobre la historia judía de Budapest.",
-            "cost": "15 euros por persona",
-            "link": "https://www.dohanystreetsynagogue.hu/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Ruina Pubs",
-            "description": "Explora los famosos pubs de ruinas de Budapest, una experiencia única en la vida nocturna de la ciudad.",
-            "cost": "Variable",
-            "link": "https://ruinpubs.com/",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Spinoza",
-            "description": "Restaurante en el barrio judío que ofrece platos tradicionales y espectáculos de música en vivo durante la cena.",
-            "cost": "25 euros por persona",
-            "link": "http://www.spinozacafe.hu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      },
-      {
-        "date": "24 de agosto de 2024",
-        "description": "Último día: recorrido por la ciudad y despedida.",
-        "activities": [
-          {
-            "name": "Parlamento de Budapest",
-            "description": "Visita uno de los edificios legislativos más impresionantes del mundo, un símbolo icónico de la ciudad.",
-            "cost": "15 euros por persona",
-            "link": "https://www.parlament.hu/en/web/house-of-the-national-assembly",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          },
-          {
-            "name": "Paseo por Váci Utca",
-            "description": "Disfruta de un último paseo por esta famosa calle peatonal, perfecta para comprar recuerdos.",
-            "cost": "Gratis",
-            "link": "https://www.budapestbylocals.com/vaci-street.html",
-            "image": "https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg"
-          }
-        ],
-        "restaurants": [
-          {
-            "name": "Gundel",
-            "description": "Para una cena de despedida, disfruta de la alta cocina húngara en uno de los restaurantes más prestigiosos de Budapest.",
-            "cost": "50 euros por persona",
-            "link": "https://www.gundel.hu/",
-            "image": "https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg"
-          }
-        ]
-      }
-    ]
-  }
+	general_info: {
+		destination: 'Budapest',
+		dates: '19 ago 2024 - 25 ago 2024',
+		description:
+			'Budapest, la capital de Hungría, es conocida por su rica historia, arquitectura impresionante y vibrante vida cultural. Dividida por el río Danubio, la ciudad ofrece una mezcla fascinante de lo antiguo y lo nuevo, ideal para explorar en familia. Desde el majestuoso Parlamento hasta los relajantes baños termales, Budapest tiene algo para todos.',
+		images: [
+			{
+				src: 'https://cdn.pixabay.com/photo/2015/03/26/09/54/buildings-690364_1280.jpg',
+				alt: 'Vista panorámica de Budapest'
+			}
+		]
+	},
+	recommendations: {
+		description:
+			'Para un viaje familiar en Budapest que combine cultura, buena comida y diversión, aquí tienes algunas recomendaciones generales.',
+		links: [
+			{
+				title: 'Información turística oficial de Budapest',
+				url: 'https://www.budapestinfo.hu/'
+			}
+		]
+	},
+	hotels: [
+		{
+			name: 'Hotel Palazzo Zichy',
+			description:
+				'Este hotel de 4 estrellas está ubicado en el centro histórico, cerca de atracciones principales. Ofrece comodidades modernas y es ideal para familias.',
+			cost: '100 euros por noche',
+			link: 'https://www.hotelpalazzozichy.hu',
+			image: 'https://cdn.pixabay.com/photo/2016/11/29/05/55/adult-1867665_1280.jpg'
+		},
+		{
+			name: 'Ibis Budapest City',
+			description:
+				'Hotel económico pero cómodo, perfecto para familias que buscan una opción más asequible. Ubicado cerca del transporte público y atracciones principales.',
+			cost: '60 euros por noche',
+			link: 'https://www.accorhotels.com/gb/hotel-1681-ibis-budapest-city/index.shtml',
+			image: 'https://cdn.pixabay.com/photo/2017/08/10/07/32/ibis-hotel-2619202_1280.jpg'
+		}
+	],
+	days: [
+		{
+			date: '19 de agosto de 2024',
+			description: 'Exploración del distrito del Castillo y paseo por el Danubio.',
+			activities: [
+				{
+					name: 'Castillo de Buda',
+					description:
+						'Visita este icónico castillo que ofrece vistas espectaculares de la ciudad y una rica historia. Ideal para enseñar a los niños sobre la historia de Hungría.',
+					cost: '10 euros por persona',
+					link: 'https://budaicastlebudapest.com/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Crucero por el Danubio',
+					description:
+						'Disfruta de un relajante crucero por el Danubio, una manera perfecta de ver la ciudad desde otra perspectiva. Especialmente mágico al atardecer.',
+					cost: '15 euros por persona',
+					link: 'https://www.legenda.hu/en',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Halászbástya Restaurant',
+					description:
+						'Ubicado cerca del Castillo de Buda, este restaurante ofrece platos húngaros tradicionales con una vista impresionante.',
+					cost: '25 euros por persona',
+					link: 'https://www.halaszbastya.eu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		},
+		{
+			date: '20 de agosto de 2024',
+			description: 'Día de museos y parques.',
+			activities: [
+				{
+					name: 'Museo Nacional Húngaro',
+					description:
+						'Explora la historia y cultura de Hungría a través de sus exposiciones. Perfecto para un día educativo en familia.',
+					cost: '8 euros por persona',
+					link: 'http://www.hnm.hu/en',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Parque de la Ciudad (Városliget)',
+					description:
+						'Visita este amplio parque que ofrece muchas actividades para niños, incluyendo un castillo, un lago para paseos en bote y áreas de juego.',
+					cost: 'Gratis',
+					link: 'https://varosliget.info/en',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Paprika',
+					description:
+						'Restaurante casual que sirve platos húngaros auténticos, ideal para almorzar después de visitar el museo.',
+					cost: '20 euros por persona',
+					link: 'https://www.paprikavendeglo.hu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		},
+		{
+			date: '21 de agosto de 2024',
+			description: 'Exploración de la Isla Margarita y visita a un espectáculo local.',
+			activities: [
+				{
+					name: 'Isla Margarita',
+					description:
+						'Un oasis en medio del Danubio, perfecto para un día de relajación en familia. Puedes alquilar bicicletas o simplemente disfrutar de un pícnic.',
+					cost: 'Gratis',
+					link: 'https://welovebudapest.com/en/venue/margaret-island-2/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Espectáculo en el Teatro Nacional de Marionetas',
+					description:
+						'Disfruta de un espectáculo cultural que fascinará tanto a adultos como a niños. Consulta la programación para elegir una obra adecuada.',
+					cost: '10 euros por persona',
+					link: 'https://www.budapestpuppet.com/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Robinson Restaurant',
+					description:
+						'Situado cerca de la Isla Margarita, este restaurante ofrece excelentes opciones para comer al aire libre con vistas al lago.',
+					cost: '30 euros por persona',
+					link: 'https://www.robinsonrestaurant.hu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		},
+		{
+			date: '22 de agosto de 2024',
+			description: 'Visita a los baños termales y tarde de compras.',
+			activities: [
+				{
+					name: 'Baños Széchenyi',
+					description:
+						'Sumérgete en uno de los baños termales más grandes de Europa, ideal para relajarse después de días de turismo.',
+					cost: '20 euros por persona',
+					link: 'http://www.szechenyibath.hu/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Andrássy Út',
+					description:
+						'Disfruta de una tarde de compras en esta avenida famosa por sus tiendas de lujo y arquitectura impresionante.',
+					cost: 'Gratis',
+					link: 'https://www.budapestbylocals.com/andrassy-avenue.html',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Menza',
+					description:
+						'Restaurante moderno y popular entre locales y turistas, ofrece una variedad de platos húngaros e internacionales.',
+					cost: '20 euros por persona',
+					link: 'https://www.menzarestaurant.hu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		},
+		{
+			date: '23 de agosto de 2024',
+			description: 'Día dedicado a la exploración de la historia judía y la vida nocturna.',
+			activities: [
+				{
+					name: 'Sinagoga de la Calle Dohány',
+					description:
+						'Visita la sinagoga más grande de Europa y aprende sobre la historia judía de Budapest.',
+					cost: '15 euros por persona',
+					link: 'https://www.dohanystreetsynagogue.hu/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Ruina Pubs',
+					description:
+						'Explora los famosos pubs de ruinas de Budapest, una experiencia única en la vida nocturna de la ciudad.',
+					cost: 'Variable',
+					link: 'https://ruinpubs.com/',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Spinoza',
+					description:
+						'Restaurante en el barrio judío que ofrece platos tradicionales y espectáculos de música en vivo durante la cena.',
+					cost: '25 euros por persona',
+					link: 'http://www.spinozacafe.hu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		},
+		{
+			date: '24 de agosto de 2024',
+			description: 'Último día: recorrido por la ciudad y despedida.',
+			activities: [
+				{
+					name: 'Parlamento de Budapest',
+					description:
+						'Visita uno de los edificios legislativos más impresionantes del mundo, un símbolo icónico de la ciudad.',
+					cost: '15 euros por persona',
+					link: 'https://www.parlament.hu/en/web/house-of-the-national-assembly',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				},
+				{
+					name: 'Paseo por Váci Utca',
+					description:
+						'Disfruta de un último paseo por esta famosa calle peatonal, perfecta para comprar recuerdos.',
+					cost: 'Gratis',
+					link: 'https://www.budapestbylocals.com/vaci-street.html',
+					image: 'https://cdn.pixabay.com/photo/2017/06/05/11/01/chain-bridge-2373348_1280.jpg'
+				}
+			],
+			restaurants: [
+				{
+					name: 'Gundel',
+					description:
+						'Para una cena de despedida, disfruta de la alta cocina húngara en uno de los restaurantes más prestigiosos de Budapest.',
+					cost: '50 euros por persona',
+					link: 'https://www.gundel.hu/',
+					image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/budapest-1867170_1280.jpg'
+				}
+			]
+		}
+	]
+};
 
 const chatgpt_response = {
 	general_info: {
