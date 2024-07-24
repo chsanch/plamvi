@@ -14,7 +14,7 @@
 </script>
 
 <DropdownMenu.Root preventScroll={false}>
-	<DropdownMenu.Trigger class="absolute right-20 top-1/2 -translate-y-1/2">
+	<DropdownMenu.Trigger class="absolute right-8 md:right-20 top-1/2 -translate-y-1/2">
 		<svelte:component this={currentMode === 'light' ? Icons.sun : Icons.moon} class="h-5 w-5" />
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content>
