@@ -3,25 +3,54 @@ import { type Infer, type SuperValidated } from 'sveltekit-superforms';
 import type { Icons } from '$lib/config/icons';
 import { aiSchema, tripSchema } from '$lib/schemas';
 
-export type TripSchema = typeof tripSchema;
-export type AiTripSchema = typeof aiSchema;
+type TripSchema = typeof tripSchema;
+type AiTripSchema = typeof aiSchema;
 
-export type Trip = Infer<TripSchema>;
-export type AiTrip = Infer<AiTripSchema>;
+type Trip = Infer<TripSchema>;
+type AiTrip = Infer<AiTripSchema>;
 
-export type SuperValidatedFormSchema = SuperValidated<Infer<TripSchema>>;
+type SuperValidatedFormSchema = SuperValidated<Infer<TripSchema>>;
 
-export type TripResponseType = {
+type TripResponseType = {
 	data: AiTrip;
 	error: string;
 	isLoading: boolean;
 };
 
-export type NavItem = {
+type NavItem = {
 	_id: number;
 	name: string;
 	href: string;
 	icon: keyof typeof Icons;
 };
 
-export type Mode = 'light' | 'dark';
+type Mode = 'light' | 'dark';
+
+type GuestData = {
+	adults: number;
+	kids: number;
+	pets: number;
+};
+
+type GuestSelectorProps = {
+	value: GuestData;
+	onChange?: (value: GuestData) => void;
+};
+
+type CounterProps = {
+	initialCount?: number;
+	step?: number;
+	min?: number;
+	max?: number;
+	onChange?: (event: { counter: number }) => void;
+};
+
+type CategoriesProps = {
+	categories: Array<string>;
+	onChange?: (value: Array<string>) => void;
+};
+
+type SliderProps = {
+	value: Array<number>;
+	onChange?: (value: Array<number>) => void;
+};
