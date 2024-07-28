@@ -5,7 +5,6 @@
 	import type { DateRange } from 'bits-ui';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { v4 as uuidv4 } from 'uuid';
 
 	import CategorySelector from '$lib/components/category-selector.svelte';
 	import DateRangePicker from '$lib/components/date-range-picker.svelte';
@@ -36,7 +35,7 @@
 	});
 
 	const { form: formData, enhance } = form;
-	const tripId: string = uuidv4();
+	const tripId: string = crypto.randomUUID();;
 
 	let guests = $state<GuestData>({ adults: 0, kids: 0, pets: 0 });
 	const categories = $state<Array<string>>([]);
