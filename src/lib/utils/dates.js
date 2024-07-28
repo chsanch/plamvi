@@ -19,7 +19,7 @@ export function dateRangeValue(value, startValue) {
 	} else if (startValue) {
 		return df.format(startValue.toDate(getLocalTimeZone()));
 	} else {
-		return 'Selecciona una fecha';
+		return 'Selecciona fechas';
 	}
 }
 

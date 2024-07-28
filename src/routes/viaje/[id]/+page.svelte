@@ -1,6 +1,7 @@
 <script>
 	import { getTripContext } from '$lib/trip-state.svelte';
 	import fetchTrip from '$lib/fetch-trip.svelte';
+	import {Spinner} from '$lib/components/ui/spinner/index.js';
 
 	/** @type {{data: import('./$types').PageData}} */
 	let { data } = $props();
@@ -11,10 +12,10 @@
 	const tripData = fetchTrip(trip);
 </script>
 
-<main class="container">
+<main class="container flex items-center justify-center min-h-screen">
 	<h1>{data.id}</h1>
 	{#if tripData.isLoading}
-		<p>Loading ...</p>
+		<Spinner size={80} color="#e74c3c" />
 	{:else if tripData.error}
 		<p>{tripData.error}</p>
 	{:else if tripData.data}

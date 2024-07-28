@@ -1,11 +1,11 @@
 <script>
-	import CalendarIcon from 'svelte-radix/Calendar.svelte';
-	import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
-	import { cn } from '$lib/utils/ui.js';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import { RangeCalendar } from '$lib/components/ui/range-calendar/index.js';
 	import * as Popover from '$lib/components/ui/popover/index.js';
-    import { dateRangeValue } from '$lib/utils/dates';
+	import { RangeCalendar } from '$lib/components/ui/range-calendar/index.js';
+	import { dateRangeValue } from '$lib/utils/dates';
+	import { cn } from '$lib/utils/ui.js';
+	import { getLocalTimeZone, today } from '@internationalized/date';
+	import CalendarIcon from 'svelte-radix/Calendar.svelte';
 
 	/** @type {{ updateDates: function} }*/
 	let { updateDates } = $props();
@@ -13,10 +13,7 @@
 	const localDate = today(getLocalTimeZone());
 
 	/** @type {import('bits-ui').DateRange | undefined}*/
-	let value = $state({
-		start: new CalendarDate(localDate.year, localDate.month, 1),
-		end: new CalendarDate(localDate.year, localDate.month, 1).add({ days: 5 })
-	});
+	let value = $state();
 
 	/** @type {import('@internationalized/date').DateValue | undefined}*/
 	let startValue = $state();
@@ -32,7 +29,7 @@
 			<Button
 				variant="outline"
 				class={cn(
-					'w-[300px] justify-start text-left font-normal',
+					'w-72 justify-start text-left font-normal sm:w-80',
 					!value && 'text-muted-foreground'
 				)}
 				builders={[builder]}
@@ -56,7 +53,7 @@
 <!--
     @component
     - DateRangePicker: A component to select a range of dates
-    
+
     @props
         - updateDates: function: A function to update the selected dates in the parent
 
