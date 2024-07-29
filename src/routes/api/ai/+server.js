@@ -1,9 +1,9 @@
+import { env } from '$env/dynamic/private';
 import { aiSchema } from '$lib/schemas';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { createOpenAI } from '@ai-sdk/openai';
-import { env } from '$env/dynamic/private';
-import { generateObject } from 'ai';
 import { json } from '@sveltejs/kit';
+import { generateObject } from 'ai';
 
 const openai = createOpenAI({
 	apiKey: env.OPEN_AI_KEY ?? ''
@@ -45,10 +45,6 @@ export const POST = async ({ request }) => {
 			`Por favor sugiere un itinerario que se adapte a nuestros gustos y presupuesto.`,
 		schema: aiSchema
 	});
-
-	console.log('usage', usage);
-	console.log('finishReason', finishReason);
-	console.log(JSON.stringify(object, null, 2));
 
 	return json(object);
 };

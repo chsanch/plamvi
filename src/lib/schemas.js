@@ -1,5 +1,10 @@
 import { z } from 'zod';
 
+export const aiModelSchema = z.object({
+	name: z.string().min(1, { message: 'Tienes que escoger una opción' }),
+	apiKey: z.string().min(1, { message: 'Este campo es obligatorio' })
+});
+
 export const tripSchema = z.object({
 	id: z.string(),
 	destination: z.string(),

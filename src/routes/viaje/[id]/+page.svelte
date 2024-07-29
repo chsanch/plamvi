@@ -1,6 +1,6 @@
 <script>
-	import { getTripContext } from '$lib/trip-state.svelte';
 	import fetchTrip from '$lib/fetch-trip.svelte';
+	import { getTripContext } from '$lib/state/trip.svelte';
 
 	/** @type {{data: import('./$types').PageData}} */
 	let { data } = $props();

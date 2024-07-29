@@ -1,10 +1,10 @@
 <script>
-	import { RangeCalendar as RangeCalendarPrimitive } from "bits-ui";
-	import * as RangeCalendar from "./index.js";
-	import { cn } from "$lib/utils/ui.js";
+	import { cn } from '$lib/utils/ui.js';
+	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
+	import * as RangeCalendar from './index.js';
 	export let value = undefined;
 	export let placeholder = undefined;
-	export let weekdayFormat = "short";
+	export let weekdayFormat = 'short';
 	export let startValue = undefined;
 	let className = undefined;
 	export { className as class };
@@ -15,7 +15,7 @@
 	bind:placeholder
 	bind:startValue
 	{weekdayFormat}
-	class={cn("p-3", className)}
+	class={cn('p-3', className)}
 	{...$$restProps}
 	on:keydown
 	let:months
