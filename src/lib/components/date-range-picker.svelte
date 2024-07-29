@@ -4,13 +4,10 @@
 	import { RangeCalendar } from '$lib/components/ui/range-calendar/index.js';
 	import { dateRangeValue } from '$lib/utils/dates';
 	import { cn } from '$lib/utils/ui.js';
-	import { getLocalTimeZone, today } from '@internationalized/date';
 	import CalendarIcon from 'svelte-radix/Calendar.svelte';
 
-	/** @type {{ updateDates: function} }*/
+	/** @type {{updateDates: function}}*/
 	let { updateDates } = $props();
-
-	const localDate = today(getLocalTimeZone());
 
 	/** @type {import('bits-ui').DateRange | undefined}*/
 	let value = $state();
