@@ -74,13 +74,13 @@
 <form class="flex flex-col gap-y-4" method="POST" use:enhance>
 	<Form.Field {form} name="id">
 		<Form.Control let:attrs>
-			<Input {...attrs} value={tripId} type="hidden" placeholder="Budapest" />
+			<Input {...attrs} value={tripId} type="hidden" />
 		</Form.Control>
 	</Form.Field>
 	<Form.Field {form} name="destination">
 		<Form.Control let:attrs>
 			<Form.Label for="destination">Destino</Form.Label>
-			<Input {...attrs} bind:value={$formData.destination} />
+			<Input {...attrs} bind:value={$formData.destination} placeholder="Budapest"/>
 		</Form.Control>
 		<Form.Description>Indica el destino de tu viaje</Form.Description>
 		<Form.FieldErrors />

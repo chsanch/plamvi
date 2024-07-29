@@ -72,38 +72,6 @@
 				</div>
 			</div>
 			<TripImages destination={tripData.data.general_info.destination} />
-			<!-- <Card.Root
-				opts={{
-					align: 'start'
-				}}
-				class="w-full"
-			>
-				<Card.Header>
-					<Card.Title>Imágenes de {tripData.data.general_info.destination}</Card.Title>
-				</Card.Header>
-				<Card.Content>
-					<Carousel.Root>
-						<Carousel.Content>
-							{#each tripData.data.images as image}
-								<Carousel.Item class="basis-1/2 sm:basis-1/3 md:basis-1/2 lg:basis-1/4">
-									<div class="p-1">
-										<Card.Content class="flex items-center justify-center p-0">
-											<img
-												src={image.src}
-												alt={image.alt}
-												class="aspect-square h-40 object-cover md:h-72"
-											/>
-										</Card.Content>
-									</div>
-								</Carousel.Item>
-							{/each}
-						</Carousel.Content>
-						<Carousel.Previous class="hidden sm:inline-flex" />
-						<Carousel.Next class="hidden sm:inline-flex" />
-					</Carousel.Root>
-				</Card.Content>
-			</Card.Root> -->
-
 			<Card.Root class="h-full">
 				<Card.Header>
 					<Card.Title
