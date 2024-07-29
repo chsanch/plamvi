@@ -46,3 +46,16 @@
 		</Popover.Content>
 	</Popover.Root>
 </div>
+
+<!--
+    @component
+    - DateRangePicker: A component to select a range of dates
+    @props
+        - updateDates: function: A function to update the selected dates in the parent
+				- disabled: boolean: A property to change status of component
+
+    @example
+    ```svelte
+    <DateRangePicker updateDates={updateDates} disabled={isDisabled} />
+    ```
+-->
