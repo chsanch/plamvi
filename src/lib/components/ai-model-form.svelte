@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { v4 as uuidv4 } from 'uuid';
 
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
@@ -31,7 +30,7 @@
 	});
 
 	const { form: formData, enhance } = form;
-	const aiFormId: string = uuidv4();
+	const aiFormId: string = crypto.randomUUID();
 </script>
 
 <h1 class="text-sm font-bold uppercase text-muted-foreground">Configuración AI</h1>

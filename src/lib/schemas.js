@@ -7,19 +7,19 @@ export const aiModelSchema = z.object({
 
 export const tripSchema = z.object({
 	id: z.string(),
-	destination: z.string(),
-	dates: z.string(),
-	people: z.string(),
-	preferences: z.string(),
-	budget: z.string()
+	destination: z.string().min(1, 'Por favor, ingrese un destino'),
+	description: z.string().min(1, 'Por favor, ingrese una descripción').max(350, 'La descripción debe tener menos de 350 caracteres'),
+	dates: z.string().min(1, 'Por favor, ingrese las fechas'),
+	people: z.string().min(1, 'Por favor, ingrese el número de personas'),
+	preferences: z.string().min(1, 'Por favor, ingrese sus preferencias'),
+	budget: z.string().min(1, 'El presupuesto debe ser mayor a 0')
 });
 
 export const aiSchema = z.object({
 	general_info: z.object({
 		destination: z.string(),
 		dates: z.string(),
-		description: z.string(),
-		images: z.array(z.object({ src: z.string(), alt: z.string() }))
+		description: z.string()
 	}),
 	recommendations: z.object({
 		description: z.string(),
@@ -30,8 +30,7 @@ export const aiSchema = z.object({
 			name: z.string(),
 			description: z.string(),
 			cost: z.number().or(z.string()),
-			link: z.string().or(z.null()),
-			image: z.string().or(z.null())
+			link: z.string().or(z.null())
 		})
 	),
 	days: z.array(
@@ -43,8 +42,7 @@ export const aiSchema = z.object({
 					name: z.string(),
 					description: z.string(),
 					cost: z.number().or(z.string()),
-					link: z.string().or(z.null()),
-					image: z.string().or(z.null())
+					link: z.string().or(z.null())
 				})
 			),
 			restaurants: z.array(
@@ -52,8 +50,7 @@ export const aiSchema = z.object({
 					name: z.string(),
 					description: z.string(),
 					cost: z.number().or(z.string()),
-					link: z.string().or(z.null()),
-					image: z.string().or(z.null())
+					link: z.string().or(z.null())
 				})
 			)
 		})
