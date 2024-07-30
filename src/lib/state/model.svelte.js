@@ -1,22 +1,28 @@
 import { getContext, setContext } from 'svelte';
 
 export class ModelState {
-	model = $state({ name: '', apiKey: '' });
+	// model = $state({ name: '', apiKey: '' });
+	name = $state('');
+	apiKey = $state('');
+
 
 	/**
-	 * @returns {import('$lib/types').AiModel}
-	 */
-	get() {
-		return this.model;
-	}
-
-	/**
-	 * @param {import('$lib/types').AiModel} newModel
+	 * @param {string} name
+	 * @param {string} apiKey
 	 * @returns void
 	 */
-	set(newModel) {
-		this.model.name = newModel.name;
-		this.model.apiKey = newModel.apiKey;
+	add(name, apiKey) {
+		this.name = name;
+		this.apiKey = apiKey;
+	}
+
+	reset() {
+		this.name = '';
+		this.apiKey = '';
+	}
+
+	get isSet() {
+		return !!this.name && !!this.apiKey;
 	}
 }
 

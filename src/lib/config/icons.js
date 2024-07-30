@@ -5,6 +5,7 @@ import {
 	Minus,
 	MoonStar,
 	PawPrint,
+	Pencil,
 	Plane,
 	Plus,
 	Sun,
@@ -23,5 +24,6 @@ export const Icons = {
 	plane: Plane,
 	plus: Plus,
 	sun: Sun,
-	users: Users
+	users: Users,
+	pencil: Pencil
 };

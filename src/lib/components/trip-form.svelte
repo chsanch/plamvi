@@ -24,12 +24,6 @@
 	const trip = getTripContext();
 	const model = getModelContext();
 
-	const aiModel = $state(model.get());
-
-	function isAiModelSet() {
-		return !!aiModel.name && !!aiModel.apiKey;
-	}
-
 	const form = superForm(data, {
 		applyAction: false,
 		validators: zodClient(tripSchema),
@@ -91,8 +85,8 @@
 			<Input
 				{...attrs}
 				bind:value={$formData.destination}
-				disabled={!isAiModelSet()}
-				placeholder="Budapest"
+				disabled={!model.isSet}
+				placeholder="Budapest ..."
 			/>
 		</Form.Control>
 		<Form.Description>Indica el destino de tu viaje</Form.Description>
@@ -101,7 +95,7 @@
 	<Form.Field {form} name="dates">
 		<Form.Control>
 			<Form.Label for="dates">Fechas del viaje</Form.Label>
-			<DateRangePicker disabled={!isAiModelSet()} updateDates={handleDatesChange} />
+			<DateRangePicker disabled={!model.isSet} updateDates={handleDatesChange} />
 			<input hidden value={$formData.dates} name="dates" />
 		</Form.Control>
 		<Form.Description>Indica las fechas de tu viaje</Form.Description>
@@ -111,7 +105,7 @@
 		<Form.Control let:attrs>
 			<Form.Label for="description">Descripción de tu viaje</Form.Label>
 			<Textarea
-				disabled={!isAiModelSet()}
+				disabled={!model.isSet}
 				class="min-h-24 resize-none"
 				placeholder="Describe tu viaje ideal..."
 				maxlength="200"
@@ -129,8 +123,8 @@
 	<Form.Field {form} name="people">
 		<Form.Control>
 			<Form.Label for="people">Acompañantes</Form.Label>
-			<div class={cn('w-fit', { 'cursor-not-allowed': !isAiModelSet() })}>
-				<GuestSelector disabled={!isAiModelSet()} value={guests} onChange={handleGuestsChange} />
+			<div class={cn('w-fit', { 'cursor-not-allowed': !model.isSet })}>
+				<GuestSelector disabled={!model.isSet} value={guests} onChange={handleGuestsChange} />
 			</div>
 			<input hidden value={$formData.people} name="people" />
 		</Form.Control>
@@ -142,7 +136,7 @@
 			<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
 				<CategorySelector
 					{categories}
-					disabled={!isAiModelSet()}
+					disabled={!model.isSet}
 					onChange={handleCategoriesChange}
 				/>
 			</div>
@@ -156,7 +150,7 @@
 			<Form.Label for="budget">Presupuesto</Form.Label>
 			<SliderSelector
 				{...attrs}
-				disabled={!isAiModelSet()}
+				disabled={!model.isSet}
 				value={budget}
 				onChange={handleBudgetChange}
 			/>
@@ -165,5 +159,5 @@
 		<Form.Description class="!mt-8">Indica el presupuesto máximo de tu viaje</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button disabled={!isAiModelSet()} size="lg">Planifica mi viaje</Form.Button>
+	<Form.Button disabled={!model.isSet} size="lg">Planifica mi viaje</Form.Button>
 </form>
