@@ -5,7 +5,6 @@
 	import type { DateRange } from 'bits-ui';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { v4 as uuidv4 } from 'uuid';
 
 	import CategorySelector from '$lib/components/category-selector.svelte';
 	import DateRangePicker from '$lib/components/date-range-picker.svelte';
@@ -36,17 +35,29 @@
 	});
 
 	const { form: formData, enhance } = form;
-	const tripId: string = uuidv4();
+	const tripId: string = crypto.randomUUID();
 
 	let guests = $state<GuestData>({ adults: 0, kids: 0, pets: 0 });
 	const categories = $state<Array<string>>([]);
 
 	const budget = $state<Array<number>>([]);
 
-	function handleGuestsChange(value: GuestData) {
-		guests = value;
-		$formData.people = `Los viajeros parae este viaje serán ${guests.adults} adultos, ${guests.kids} niños y ${guests.pets} mascotas`;
+	function handleGuestsChange(guests: GuestData) {
+		let people = guests
+			? `Los viajeros para este viaje serán ${guests.adults} adulto${guests.adults > 1 ? 's' : ''}`
+			: '';
+
+		if (guests.kids > 0) {
+			people += `, ${guests.kids} niño${guests.kids > 1 ? 's' : ''}`;
+		}
+
+		if (guests.pets > 0) {
+			people += `, ${guests.pets} mascota${guests.pets > 1 ? 's' : ''}`;
+		}
+
+		$formData.people = people;
 	}
+
 
 	function handleDatesChange(dates: DateRange) {
 		$formData.dates = dateRangeToPrompt(dates);
@@ -60,7 +71,6 @@
 		$formData.preferences = `Las preferencias del viaje son las siguientes: ${categories.join(', ')}`;
 	}
 </script>
-
 <form class="flex flex-col gap-y-4" method="POST" use:enhance>
 	<Form.Field {form} name="id">
 		<Form.Control let:attrs>
@@ -70,18 +80,9 @@
 	<Form.Field {form} name="destination">
 		<Form.Control let:attrs>
 			<Form.Label for="destination">Destino</Form.Label>
-			<Textarea
-				class="min-h-24 resize-none"
-				placeholder="Describe tu viaje ideal..."
-				{...attrs}
-				bind:value={$formData.destination}
-			/>
+			<Input {...attrs} bind:value={$formData.destination} placeholder="Budapest"/>
 		</Form.Control>
-		<Form.Description
-			>Ejemplo: Viaje por Italia en Septiembre por 10 días. Roma, Florencia, Venecia. Museos,
-			historia, gastronomía. Hoteles céntricos, tours guiados, días libres. Recomendaciones de
-			restaurantes y actividades.</Form.Description
-		>
+		<Form.Description>Indica el destino de tu viaje</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
 	<Form.Field {form} name="dates">
@@ -93,6 +94,24 @@
 		<Form.Description>Indica las fechas de tu viaje</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
+	<Form.Field {form} name="description">
+		<Form.Control let:attrs>
+			<Form.Label for="description">Descripción de tu viaje</Form.Label>
+			<Textarea
+				class="min-h-24 resize-none"
+				placeholder="Describe tu viaje ideal..."
+				maxlength="200"
+				{...attrs}
+				bind:value={$formData.description}
+			/>
+		</Form.Control>
+		<Form.Description>
+			(Opcional) Ejemplo: Viaje para conocer sitios históricos, comer en restaurantes locales y
+			disfrutar de la naturaleza.
+		</Form.Description>
+		<Form.FieldErrors />
+	</Form.Field>
+
 	<Form.Field {form} name="people">
 		<Form.Control>
 			<Form.Label for="people">Acompañantes</Form.Label>
