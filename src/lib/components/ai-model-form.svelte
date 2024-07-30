@@ -42,7 +42,7 @@
 			onclick={() => {
 				model.reset();
 				isDisabled = false;
-			}}><svelte:component this={Icons['pencil']} class="h-4 w-4" />
+			}}><Icons.pencil class="h-4 w-4"/>
 		</button>
 	</span>
 </h1>
