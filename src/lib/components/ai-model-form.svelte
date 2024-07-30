@@ -7,6 +7,8 @@
 	import * as Select from '$lib/components/ui/select/index.js';
 	import type { SuperValidatedModelFormSchema } from '$lib/types';
 
+	import { Icons } from '$lib/config/icons';
+
 	import { aiModelSchema } from '$lib/schemas';
 	import { getModelContext } from '$lib/state/model.svelte';
 
@@ -22,7 +24,7 @@
 		validators: zodClient(aiModelSchema),
 		onUpdated: ({ form }) => {
 			if (form.valid) {
-				model.set(form.data);
+				model.add(form.data.name, form.data.apiKey);
 				isDisabled = true;
 				inputPlaceholder = '**-*****-*********************';
 			}
@@ -33,7 +35,17 @@
 	const aiFormId: string = crypto.randomUUID();
 </script>
 
-<h1 class="text-sm font-bold uppercase text-muted-foreground">Configuración AI</h1>
+<h1 class="flex items-center gap-2 text-sm font-bold uppercase text-muted-foreground">
+	Configuración AI 
+	<span>
+		<button
+			onclick={() => {
+				model.reset();
+				isDisabled = false;
+			}}><svelte:component this={Icons['pencil']} class="h-4 w-4" />
+		</button>
+	</span>
+</h1>
 
 <form class="flex flex-col gap-y-2" method="POST" action="?/model" use:enhance>
 	<Form.Field {form} name="id">
@@ -54,7 +66,13 @@
 					<Select.Value placeholder="Selecciona un modelo" />
 				</Select.Trigger>
 				<Select.Content>
-					<Select.Item value="GPT-3.5" label="OpenAI GPT-3.5" />
+					<Select.Item value="gpt-4o" label="OpenAI GPT-4-O" />
+					<Select.Item value="gpt-4-turbo" label="OpenAI GPT-4 Turbo" />
+					<Select.Item value="gpt-4" label="OpenAI GPT-4" />
+					<Select.Item value="gpt-3.5-turbo" label="OpenAI GPT-3.5 Turbo" />
+					<Select.Item value="models/gemini-1.5-flash-latest" label="Google Gemini 1.5 Flash" />
+					<Select.Item value="models/gemini-1.5-pro-latest" label="Google Gemini 1.5 Pro" />
+					<Select.Item value="models/gemini-pro" label="Google Gemini Pro" />
 				</Select.Content>
 			</Select.Root>
 			<input hidden bind:value={$formData.name} name={attrs.name} />
