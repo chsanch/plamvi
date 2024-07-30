@@ -1,9 +1,11 @@
 <script>
 	import ApplicationHeader from '$lib/components/application-header.svelte';
+	import { setModelContext } from '$lib/state/model.svelte';
+	import { setTripContext } from '$lib/state/trip.svelte';
 	import '$lib/styles/globals.css';
-	import { setTripContext } from '$lib/trip-state.svelte';
 
 	setTripContext();
+	setModelContext();
 
 	let { children } = $props();
 </script>

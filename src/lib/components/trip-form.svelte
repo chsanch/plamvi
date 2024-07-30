@@ -1,6 +1,4 @@
 <script lang="ts">
-	import SuperDebug from 'sveltekit-superforms';
-
 	import { goto } from '$app/navigation';
 	import type { DateRange } from 'bits-ui';
 	import { superForm } from 'sveltekit-superforms';
@@ -15,18 +13,27 @@
 
 	import SliderSelector from '$lib/components/slider-selector.svelte';
 	import { tripSchema } from '$lib/schemas';
-	import { getTripContext } from '$lib/trip-state.svelte';
-	import type { GuestData, SuperValidatedFormSchema } from '$lib/types';
+	import { getModelContext } from '$lib/state/model.svelte';
+	import { getTripContext } from '$lib/state/trip.svelte';
+	import type { GuestData, SuperValidatedTripFormSchema } from '$lib/types';
 	import { dateRangeToPrompt } from '$lib/utils/dates';
+	import { cn } from '$lib/utils/ui';
 
-	const { data }: { data: SuperValidatedFormSchema } = $props();
+	const { data }: { data: SuperValidatedTripFormSchema } = $props();
 
 	const trip = getTripContext();
+	const model = getModelContext();
+
+	const aiModel = $state(model.get());
+
+	function isAiModelSet() {
+		return !!aiModel.name && !!aiModel.apiKey;
+	}
 
 	const form = superForm(data, {
 		applyAction: false,
 		validators: zodClient(tripSchema),
-		onUpdated({ form }) {
+		onUpdated: ({ form }) => {
 			if (form.valid) {
 				trip.add(form.data);
 				goto('/viaje/' + form.data.id);
@@ -58,8 +65,7 @@
 		$formData.people = people;
 	}
 
-
-	function handleDatesChange(dates: DateRange) {
+	function handleDatesChange(dates: DateRange | undefined) {
 		$formData.dates = dateRangeToPrompt(dates);
 	}
 
@@ -71,7 +77,9 @@
 		$formData.preferences = `Las preferencias del viaje son las siguientes: ${categories.join(', ')}`;
 	}
 </script>
-<form class="flex flex-col gap-y-4" method="POST" use:enhance>
+
+<h1 class="text-sm font-bold uppercase text-muted-foreground">Planifica el viaje</h1>
+<form class="flex flex-col gap-y-2" method="POST" action="?/trip" use:enhance>
 	<Form.Field {form} name="id">
 		<Form.Control let:attrs>
 			<Input {...attrs} value={tripId} type="hidden" />
@@ -80,7 +88,12 @@
 	<Form.Field {form} name="destination">
 		<Form.Control let:attrs>
 			<Form.Label for="destination">Destino</Form.Label>
-			<Input {...attrs} bind:value={$formData.destination} placeholder="Budapest"/>
+			<Input
+				{...attrs}
+				bind:value={$formData.destination}
+				disabled={!isAiModelSet()}
+				placeholder="Budapest"
+			/>
 		</Form.Control>
 		<Form.Description>Indica el destino de tu viaje</Form.Description>
 		<Form.FieldErrors />
@@ -88,7 +101,7 @@
 	<Form.Field {form} name="dates">
 		<Form.Control>
 			<Form.Label for="dates">Fechas del viaje</Form.Label>
-			<DateRangePicker updateDates={handleDatesChange} />
+			<DateRangePicker disabled={!isAiModelSet()} updateDates={handleDatesChange} />
 			<input hidden value={$formData.dates} name="dates" />
 		</Form.Control>
 		<Form.Description>Indica las fechas de tu viaje</Form.Description>
@@ -98,6 +111,7 @@
 		<Form.Control let:attrs>
 			<Form.Label for="description">Descripción de tu viaje</Form.Label>
 			<Textarea
+				disabled={!isAiModelSet()}
 				class="min-h-24 resize-none"
 				placeholder="Describe tu viaje ideal..."
 				maxlength="200"
@@ -115,8 +129,8 @@
 	<Form.Field {form} name="people">
 		<Form.Control>
 			<Form.Label for="people">Acompañantes</Form.Label>
-			<div>
-				<GuestSelector value={guests} onChange={handleGuestsChange} />
+			<div class={cn('w-fit', { 'cursor-not-allowed': !isAiModelSet() })}>
+				<GuestSelector disabled={!isAiModelSet()} value={guests} onChange={handleGuestsChange} />
 			</div>
 			<input hidden value={$formData.people} name="people" />
 		</Form.Control>
@@ -126,7 +140,11 @@
 		<Form.Control let:attrs>
 			<Form.Label for="preferences">Categorías</Form.Label>
 			<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-				<CategorySelector {categories} onChange={handleCategoriesChange} />
+				<CategorySelector
+					{categories}
+					disabled={!isAiModelSet()}
+					onChange={handleCategoriesChange}
+				/>
 			</div>
 			<input hidden value={$formData.preferences} name="preferences" />
 		</Form.Control>
@@ -136,13 +154,16 @@
 	<Form.Field {form} name="budget">
 		<Form.Control let:attrs>
 			<Form.Label for="budget">Presupuesto</Form.Label>
-			<SliderSelector {...attrs} value={budget} onChange={handleBudgetChange} />
+			<SliderSelector
+				{...attrs}
+				disabled={!isAiModelSet()}
+				value={budget}
+				onChange={handleBudgetChange}
+			/>
 			<input hidden value={$formData.budget} name="budget" />
 		</Form.Control>
 		<Form.Description class="!mt-8">Indica el presupuesto máximo de tu viaje</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button class="mt-8" size="lg">Planifica mi viaje</Form.Button>
+	<Form.Button disabled={!isAiModelSet()} size="lg">Planifica mi viaje</Form.Button>
 </form>
-
-<SuperDebug data={$formData} />

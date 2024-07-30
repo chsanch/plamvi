@@ -1,34 +1,34 @@
-<script>
+<script lang="ts">
+	import { type DateValue } from '@internationalized/date';
+	import type { DateRange } from 'bits-ui';
+	import CalendarIcon from 'svelte-radix/Calendar.svelte';
+
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Popover from '$lib/components/ui/popover/index.js';
 	import { RangeCalendar } from '$lib/components/ui/range-calendar/index.js';
+	import type { DateRangePickerProps } from '$lib/types';
 	import { dateRangeValue } from '$lib/utils/dates';
 	import { cn } from '$lib/utils/ui.js';
-	import CalendarIcon from 'svelte-radix/Calendar.svelte';
 
-	/** @type {{updateDates: function}}*/
-	let { updateDates } = $props();
+	let { updateDates, disabled }: DateRangePickerProps = $props();
 
-	/** @type {import('bits-ui').DateRange | undefined}*/
-	let value = $state();
-
-	/** @type {import('@internationalized/date').DateValue | undefined}*/
-	let startValue = $state();
+	let value: DateRange | undefined = $state();
+	let startValue: DateValue | undefined = $state();
 
 	$effect(() => {
 		updateDates(value);
 	});
 </script>
 
-<div class="grid gap-2">
+<div class={cn('grid w-fit gap-2', { 'cursor-not-allowed': disabled })}>
 	<Popover.Root openFocus>
 		<Popover.Trigger asChild let:builder>
 			<Button
+				{disabled}
 				variant="outline"
-				class={cn(
-					'w-72 justify-start text-left font-normal sm:w-80',
-					!value && 'text-muted-foreground'
-				)}
+				class={cn('w-72 justify-start text-left font-normal sm:w-80', {
+					'text-muted-foreground': !value
+				})}
 				builders={[builder]}
 			>
 				<CalendarIcon class="mr-2 h-4 w-4" />
@@ -50,12 +50,12 @@
 <!--
     @component
     - DateRangePicker: A component to select a range of dates
-
     @props
         - updateDates: function: A function to update the selected dates in the parent
+				- disabled: boolean: A property to change status of component
 
     @example
     ```svelte
-    <DateRangePicker updateDates={updateDates}/>
+    <DateRangePicker updateDates={updateDates} disabled={isDisabled} />
     ```
 -->

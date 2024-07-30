@@ -12,7 +12,8 @@
 			kids: 0,
 			pets: 0
 		},
-		onChange = () => {}
+		onChange = () => {},
+		disabled
 	}: GuestSelectorProps = $props();
 
 	let guests = $state({ ...value });
@@ -57,7 +58,12 @@
 	onOpenChange={handleOpenChange}
 >
 	<DropdownMenu.Trigger
-		class="flex w-72 items-center justify-between gap-x-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground sm:w-80"
+		class={cn(
+			'flex w-72 items-center justify-between gap-x-2 rounded-lg border px-4 py-2 text-sm text-muted-foreground sm:w-80',
+			{
+				'pointer-events-none opacity-50': disabled
+			}
+		)}
 	>
 		<span>{triggerLabel()}</span>
 		<Icons.chevronDown

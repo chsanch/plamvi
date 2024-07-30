@@ -1,10 +1,10 @@
 <script>
-	import { getTripContext } from '$lib/trip-state.svelte';
-	import fetchTrip from '$lib/fetch-trip.svelte';
-	import { Spinner } from '$lib/components/ui/spinner/index.js';
-	import * as Card from '$lib/components/ui/card';
-	import { buttonVariants } from '$lib/components/ui/button';
 	import TripImages from '$lib/components/trip-images.svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card';
+	import { Spinner } from '$lib/components/ui/spinner/index.js';
+	import fetchTrip from '$lib/fetch-trip.svelte';
+	import { getTripContext } from '$lib/state/trip.svelte';
 
 	/** @type {{data: import('./$types').PageData}} */
 	let { data } = $props();
@@ -30,7 +30,9 @@
 							<Card.Description>{tripData.data.general_info.description}</Card.Description>
 						</Card.Header>
 						<Card.Footer>
-							<span class="text-sm text-muted-foreground">Fechas: {tripData.data.general_info.dates}</span>
+							<span class="text-sm text-muted-foreground"
+								>Fechas: {tripData.data.general_info.dates}</span
+							>
 						</Card.Footer>
 					</Card.Root>
 				</div>
@@ -75,7 +77,9 @@
 			<Card.Root class="h-full">
 				<Card.Header>
 					<Card.Title
-						>Itinerario de <span class="underline underline-offset-2">{tripData.data.days.length} días</span>
+						>Itinerario de <span class="underline underline-offset-2"
+							>{tripData.data.days.length} días</span
+						>
 						en {tripData.data.general_info.destination}</Card.Title
 					>
 				</Card.Header>

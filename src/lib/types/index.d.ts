@@ -1,15 +1,19 @@
+import type { DateRange } from 'bits-ui';
 import { type Infer, type SuperValidated } from 'sveltekit-superforms';
 
 import type { Icons } from '$lib/config/icons';
-import { aiSchema, tripSchema } from '$lib/schemas';
+import { aiModelSchema, aiSchema, tripSchema } from '$lib/schemas';
 
+type AiModelSchema = typeof aiModelSchema;
 type TripSchema = typeof tripSchema;
 type AiTripSchema = typeof aiSchema;
 
+type AiModel = Infer<AiModelSchema>;
 type Trip = Infer<TripSchema>;
 type AiTrip = Infer<AiTripSchema>;
 
-type SuperValidatedFormSchema = SuperValidated<Infer<TripSchema>>;
+type SuperValidatedTripFormSchema = SuperValidated<Infer<TripSchema>>;
+type SuperValidatedModelFormSchema = SuperValidated<Infer<AiModelSchema>>;
 
 type TripResponseType = {
 	data: AiTrip;
@@ -26,6 +30,11 @@ type NavItem = {
 
 type Mode = 'light' | 'dark';
 
+type DateRangePickerProps = {
+	updateDates: (date: DateRange | undefined) => void;
+	disabled: boolean;
+};
+
 type GuestData = {
 	adults: number;
 	kids: number;
@@ -35,6 +44,7 @@ type GuestData = {
 type GuestSelectorProps = {
 	value: GuestData;
 	onChange?: (value: GuestData) => void;
+	disabled: boolean;
 };
 
 type CounterProps = {
@@ -48,9 +58,11 @@ type CounterProps = {
 type CategoriesProps = {
 	categories: Array<string>;
 	onChange?: (value: Array<string>) => void;
+	disabled: boolean;
 };
 
 type SliderProps = {
 	value: Array<number>;
 	onChange?: (value: Array<number>) => void;
+	disabled: boolean;
 };

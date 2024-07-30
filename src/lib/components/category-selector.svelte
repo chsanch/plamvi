@@ -4,11 +4,13 @@
 	import type { CategoriesProps } from '$lib/types';
 	import { cn } from '$lib/utils/ui';
 
-	const { categories = [], onChange = () => {} }: CategoriesProps = $props();
+	const { categories = [], onChange = () => {}, disabled }: CategoriesProps = $props();
 
 	const categoriesSelected: Array<string> = $state(categories);
 
 	function handleCategorySelected(category: string) {
+		if (disabled) return;
+
 		const index = categoriesSelected.indexOf(category);
 
 		if (index !== -1) categoriesSelected.splice(index, 1);
@@ -22,7 +24,10 @@
 	<Badge
 		class={cn(
 			'cursor-pointer py-1 text-xs text-muted-foreground transition-colors duration-150 hover:border-primary hover:text-primary',
-			{ 'border-primary text-primary': categoriesSelected.includes(category) }
+			{
+				'border-primary text-primary': categoriesSelected.includes(category),
+				'cursor-not-allowed opacity-50 hover:border-border hover:text-muted-foreground': disabled
+			}
 		)}
 		variant="outline"
 		onclick={() => handleCategorySelected(category)}>{category}</Badge
