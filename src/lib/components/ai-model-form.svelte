@@ -88,6 +88,7 @@
 				disabled={isDisabled}
 				placeholder={isDisabled ? inputPlaceholder : ''}
 				bind:value={$formData.apiKey}
+				type="password"
 			/>
 		</Form.Control>
 		<Form.Description>Introduce tu API key</Form.Description>

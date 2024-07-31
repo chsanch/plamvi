@@ -17,7 +17,7 @@ type SuperValidatedModelFormSchema = SuperValidated<Infer<AiModelSchema>>;
 
 type TripResponseType = {
 	data: AiTrip;
-	error: string;
+	error: { type: string; message: string };
 	isLoading: boolean;
 };
 

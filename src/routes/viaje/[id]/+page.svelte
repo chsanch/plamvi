@@ -5,21 +5,28 @@
 	import { Spinner } from '$lib/components/ui/spinner/index.js';
 	import fetchTrip from '$lib/fetch-trip.svelte';
 	import { getTripContext } from '$lib/state/trip.svelte';
+	import { getModelContext } from '$lib/state/model.svelte';
 
 	/** @type {{data: import('./$types').PageData}} */
 	let { data } = $props();
 
 	const tripState = getTripContext();
+	/** @type {import('$lib/types').Trip}*/
 	const trip = tripState.getTrip(data.id);
 
-	const tripData = fetchTrip(trip);
+	/** @type {import('$lib/types').AiModel}*/
+	const model = getModelContext();
+
+	const tripData = fetchTrip(trip, model);
+	
+
 </script>
 
 <main class="container flex min-h-screen items-center justify-center">
 	{#if tripData.isLoading}
 		<Spinner size={80} color="#e74c3c" />
-	{:else if tripData.error}
-		<p>{tripData.error}</p>
+	{:else if tripData.error.type}
+		<p>Error: {tripData.error.message}</p>
 	{:else if tripData.data}
 		<main class="w-full space-y-4 md:container">
 			<div class="grid grid-cols-5 gap-2">
