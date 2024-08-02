@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 export const aiModelSchema = z.object({
 	name: z.string().min(1, { message: 'Tienes que escoger una opción' }),
+	label: z.string(),
 	apiKey: z.string().min(1, { message: 'Este campo es obligatorio' })
 });
 

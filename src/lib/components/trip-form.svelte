@@ -86,7 +86,7 @@
 				{...attrs}
 				bind:value={$formData.destination}
 				disabled={!model.isSet}
-				placeholder="Budapest ..."
+				placeholder="Por ejemplo: Budapest"
 			/>
 		</Form.Control>
 		<Form.Description>Indica el destino de tu viaje</Form.Description>
@@ -134,11 +134,7 @@
 		<Form.Control let:attrs>
 			<Form.Label for="preferences">Categorías</Form.Label>
 			<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-				<CategorySelector
-					{categories}
-					disabled={!model.isSet}
-					onChange={handleCategoriesChange}
-				/>
+				<CategorySelector {categories} disabled={!model.isSet} onChange={handleCategoriesChange} />
 			</div>
 			<input hidden value={$formData.preferences} name="preferences" />
 		</Form.Control>
