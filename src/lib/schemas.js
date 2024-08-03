@@ -45,7 +45,7 @@ export const aiSchema = z.object({
 					cost: z.number().or(z.string()),
 					link: z.string().or(z.null())
 				})
-			),
+			).or(z.null()),
 			restaurants: z.array(
 				z.object({
 					name: z.string(),
@@ -53,7 +53,7 @@ export const aiSchema = z.object({
 					cost: z.number().or(z.string()),
 					link: z.string().or(z.null())
 				})
-			)
+			).or(z.null())
 		})
 	)
 });
