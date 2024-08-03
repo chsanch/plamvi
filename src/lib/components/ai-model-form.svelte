@@ -5,12 +5,11 @@
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
 	import * as Select from '$lib/components/ui/select/index.js';
-	import type { SuperValidatedModelFormSchema } from '$lib/types';
 
 	import { Icons } from '$lib/config/icons';
-
 	import { aiModelSchema } from '$lib/schemas';
 	import { getModelContext } from '$lib/state/model.svelte';
+	import type { SuperValidatedModelFormSchema } from '$lib/types';
 
 	const { data }: { data: SuperValidatedModelFormSchema } = $props();
 
@@ -24,7 +23,7 @@
 		validators: zodClient(aiModelSchema),
 		onUpdated: ({ form }) => {
 			if (form.valid) {
-				model.add(form.data.name, form.data.apiKey);
+				model.add(form.data.name, form.data.label, form.data.apiKey);
 				isDisabled = true;
 				inputPlaceholder = '**-*****-*********************';
 			}
@@ -35,16 +34,20 @@
 	const aiFormId: string = crypto.randomUUID();
 </script>
 
-<h1 class="flex items-center gap-2 text-sm font-bold uppercase text-muted-foreground">
-	Configuración AI 
-	<span>
-		<button
-			onclick={() => {
-				model.reset();
-				isDisabled = false;
-			}}><Icons.pencil class="h-4 w-4"/>
-		</button>
-	</span>
+<h1 class="flex items-center gap-3 text-sm font-bold uppercase text-muted-foreground">
+	Configuración AI
+	{#if model.isSet}
+		<span title="Editar modelo AI">
+			<Icons.pencil
+				onclick={() => {
+					model.reset();
+					form.reset();
+					isDisabled = false;
+				}}
+				class="h-3.5 w-3.5 cursor-pointer hover:text-primary"
+			/>
+		</span>
+	{/if}
 </h1>
 
 <form class="flex flex-col gap-y-2" method="POST" action="?/model" use:enhance>
@@ -57,6 +60,7 @@
 		<Form.Control let:attrs>
 			<Form.Label for="name">Modelo</Form.Label>
 			<Select.Root
+				selected={model}
 				disabled={isDisabled}
 				onSelectedChange={(v) => {
 					v && ($formData.name = v.value as string);

@@ -1,12 +1,12 @@
 <script>
-	import { cn, flyAndScale } from '$lib/utils/ui.js';
-	import { Tooltip as TooltipPrimitive } from 'bits-ui';
+	import { Tooltip as TooltipPrimitive } from "bits-ui";
+	import { cn, flyAndScale } from "$lib/utils/ui.js";
 	let className = undefined;
 	export let sideOffset = 4;
 	export let transition = flyAndScale;
 	export let transitionConfig = {
 		y: 8,
-		duration: 150
+		duration: 150,
 	};
 	export { className as class };
 </script>
@@ -16,7 +16,7 @@
 	{transitionConfig}
 	{sideOffset}
 	class={cn(
-		'z-50 overflow-hidden rounded-md bg-secondary px-3 py-1.5 text-xs text-accent-foreground',
+		"bg-primary text-primary-foreground z-50 overflow-hidden rounded-md px-3 py-1.5 text-xs",
 		className
 	)}
 	{...$$restProps}

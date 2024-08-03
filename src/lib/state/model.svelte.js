@@ -1,23 +1,25 @@
 import { getContext, setContext } from 'svelte';
 
 export class ModelState {
-	// model = $state({ name: '', apiKey: '' });
 	name = $state('');
+	label = $state('');
 	apiKey = $state('');
-
 
 	/**
 	 * @param {string} name
+	 * @param {string} label
 	 * @param {string} apiKey
 	 * @returns void
 	 */
-	add(name, apiKey) {
+	add(name, label, apiKey) {
 		this.name = name;
+		this.label = label;
 		this.apiKey = apiKey;
 	}
 
 	reset() {
 		this.name = '';
+		this.label = '';
 		this.apiKey = '';
 	}
 
