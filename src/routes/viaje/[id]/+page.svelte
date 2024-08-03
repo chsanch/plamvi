@@ -23,7 +23,7 @@
 
 {#if tripData.isLoading}
 	<TripSkeleton />
-{:else if tripData.error}
+{:else if tripData.error.type}
 	<p>Error: {tripData.error.message}</p>
 {:else if tripData.data}
 	<main class="w-full space-y-4 md:container">

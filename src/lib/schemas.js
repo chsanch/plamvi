@@ -24,7 +24,7 @@ export const aiSchema = z.object({
 	}),
 	recommendations: z.object({
 		description: z.string(),
-		links: z.array(z.object({ title: z.string(), url: z.string() }))
+		links: z.array(z.object({ title: z.string(), url: z.string() })).or(z.null())
 	}),
 	hotels: z.array(
 		z.object({
