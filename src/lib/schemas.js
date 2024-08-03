@@ -25,7 +25,7 @@ export const aiSchema = z.object({
 	recommendations: z.object({
 		description: z.string(),
 		links: z.array(z.object({ title: z.string(), url: z.string() })).or(z.null())
-	}),
+	}).optional(),
 	hotels: z.array(
 		z.object({
 			name: z.string(),
@@ -33,7 +33,7 @@ export const aiSchema = z.object({
 			cost: z.number().or(z.string()),
 			link: z.string().or(z.null())
 		})
-	),
+	).optional(),
 	days: z.array(
 		z.object({
 			date: z.string(),
@@ -45,7 +45,7 @@ export const aiSchema = z.object({
 					cost: z.number().or(z.string()),
 					link: z.string().or(z.null())
 				})
-			).or(z.null()),
+			).optional(),
 			restaurants: z.array(
 				z.object({
 					name: z.string(),
@@ -53,7 +53,7 @@ export const aiSchema = z.object({
 					cost: z.number().or(z.string()),
 					link: z.string().or(z.null())
 				})
-			).or(z.null())
+			).optional()
 		})
 	)
 });
