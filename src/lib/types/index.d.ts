@@ -66,3 +66,8 @@ type SliderProps = {
 	onChange?: (value: Array<number>) => void;
 	disabled: boolean;
 };
+
+type ErrorProps = {
+	backRoute: string;
+	message: string;
+};
