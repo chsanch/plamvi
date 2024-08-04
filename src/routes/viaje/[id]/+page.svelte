@@ -6,9 +6,10 @@
 	import { buttonVariants } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 
+	import Error from '$lib/components/error.svelte';
 	import fetchTrip from '$lib/fetch-trip.svelte';
-	import { getTripContext } from '$lib/state/trip.svelte';
 	import { getModelContext } from '$lib/state/model.svelte';
+	import { getTripContext } from '$lib/state/trip.svelte';
 	import type { AiModel, Trip, TripResponseType } from '$lib/types';
 
 	let { data }: { data: PageData } = $props();
@@ -24,7 +25,7 @@
 {#if tripData.isLoading}
 	<TripSkeleton />
 {:else if tripData.error.type}
-	<p>Error: {tripData.error.message}</p>
+	<Error message={tripData.error.message} backRoute="/viaje" />
 {:else if tripData.data}
 	<main class="w-full space-y-4 md:container">
 		<div class="grid grid-cols-5 gap-2">

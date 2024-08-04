@@ -1,6 +1,7 @@
 import {
 	Baby,
 	ChevronDown,
+	ChevronLeft,
 	Home,
 	Minus,
 	MoonStar,
@@ -17,6 +18,7 @@ export const Icons = {
 	adult: UserRound,
 	baby: Baby,
 	chevronDown: ChevronDown,
+	chevronLeft: ChevronLeft,
 	home: Home,
 	minus: Minus,
 	moon: MoonStar,
