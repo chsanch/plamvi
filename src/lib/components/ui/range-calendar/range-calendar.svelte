@@ -1,5 +1,6 @@
 <script>
 	import { cn } from '$lib/utils/ui.js';
+	import { parseDate } from '@internationalized/date';
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import * as RangeCalendar from './index.js';
 	export let value = undefined;
@@ -8,6 +9,8 @@
 	export let startValue = undefined;
 	let className = undefined;
 	export { className as class };
+
+	const today = parseDate(new Date().toISOString().split('T')[0]);
 </script>
 
 <RangeCalendarPrimitive.Root
@@ -17,6 +20,7 @@
 	{weekdayFormat}
 	class={cn('p-3', className)}
 	{...$$restProps}
+	minValue={today}
 	on:keydown
 	let:months
 	let:weekdays

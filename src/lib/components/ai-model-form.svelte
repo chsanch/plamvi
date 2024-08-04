@@ -44,7 +44,7 @@
 					form.reset();
 					isDisabled = false;
 				}}
-				class="h-3.5 w-3.5 cursor-pointer hover:text-primary"
+				class="h-4 w-4 cursor-pointer hover:text-primary"
 			/>
 		</span>
 	{/if}

@@ -25,6 +25,7 @@ const getModelClient = async (model) => {
 			apiKey: model.apiKey
 		});
 	}
+
 	return null;
 };
 
@@ -40,7 +41,6 @@ export const POST = async ({ request }) => {
 
 	try {
 		const { object } = await generateObject({
-			// model: openai('gpt-4-turbo'),
 			model: aiModel(model.name),
 			system:
 				`Eres un asistente de viajes. Ayudas a planificar itinerarios de viaje. ` +
@@ -65,9 +65,9 @@ export const POST = async ({ request }) => {
 				`Por favor sugiere un itinerario que se adapte a nuestras preferencias, gustos y presupuesto.`,
 			schema: aiSchema
 		});
+
 		return json(object);
 	} catch (error) {
-		console.log(error);
 		if (TypeValidationError.isTypeValidationError(error)) {
 			return json({ error: { type: 'validation-error', message: error.value } });
 		} else if (JSONParseError.isJSONParseError(error)) {
