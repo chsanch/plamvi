@@ -115,7 +115,7 @@
 						<Dialog.Content class="max-w-3xl px-8">
 							<Dialog.Header>
 								<Dialog.Title class="mb-4 flex flex-col gap-y-1">
-									<h1>Viaje a {trip.general_info.destination}: Día {day.date}</h1>
+	<h1>Viaje a {tripData.data.general_info.destination}: Día {day.date}</h1>
 									<span class="text-sm text-muted-foreground">{day.description}</span>
 								</Dialog.Title>
 								<Dialog.Close></Dialog.Close>
