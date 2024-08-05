@@ -21,6 +21,7 @@
 	const trip: Trip = tripState.getTrip(data.id);
 
 	const tripData: TripResponseType = fetchTrip(trip, model);
+	console.log('tripData', tripData);
 </script>
 
 {#if tripData.isLoading}
@@ -54,8 +55,10 @@
 							<h3 class="text-sm text-muted-foreground">Links de interés:</h3>
 							{#each tripData.data.recommendations!.links! as recommendation, index}
 								<li>
-									<a class={buttonVariants({ variant: 'link' })} href={recommendation.url}
-										>{recommendation.title}</a
+									<a
+										class={buttonVariants({ variant: 'link' })}
+										href={recommendation.url}
+										target="_blank">{recommendation.title}</a
 									>
 								</li>
 								{#if index < tripData.data.recommendations!.links!.length - 1}
@@ -63,18 +66,26 @@
 								{/if}
 							{/each}
 						</ul>
-
-						<ul class="flex flex-wrap items-center">
-							<h3 class="text-sm text-muted-foreground">Hoteles destacados:</h3>
-							{#each tripData.data.hotels! as hotel, index}
-								<li>
-									<a class={buttonVariants({ variant: 'link' })} href={hotel.link}>{hotel.name}</a>
-								</li>
-								{#if index < tripData.data.hotels!.length - 1}
-									<span class="text-primary">|</span>
-								{/if}
-							{/each}
-						</ul>
+						{#if tripData.data.hotels}
+							<p class="text-sm text-muted-foreground">Hoteles:</p>
+							<ul class="flex flex-wrap items-center">
+								<h3 class="text-sm text-muted-foreground">Hoteles destacados:</h3>
+								{#each tripData.data.hotels! as hotel, index}
+									<li>
+										<a
+											class={buttonVariants({ variant: 'link' })}
+											href={hotel.link}
+											target="_blank"
+										>
+											{hotel.name}
+										</a>
+									</li>
+									{#if index < tripData.data.hotels!.length - 1}
+										<span class="text-primary">|</span>
+									{/if}
+								{/each}
+							</ul>
+						{/if}
 					</Card.Content>
 				</Card.Root>
 			</div>
@@ -101,15 +112,17 @@
 									<Card.Description>{day.description}</Card.Description>
 								</Card.Header>
 								<Card.Content>
-									<p class="text-sm text-muted-foreground">Resumen:</p>
-									<ul class="pl-2">
-										{#each day.activities || [] as activity}
-											<li class="text-sm leading-6">
-												<span class="font-bold">{activity.name}</span>
-												<p class="text-muted-foreground">{activity.description}</p>
-											</li>
-										{/each}
-									</ul>
+									{#if day.activities && day.activities.length > 0}
+										<p class="text-sm text-muted-foreground">Resumen:</p>
+										<ul class="pl-2">
+											{#each day.activities as activity}
+												<li class="text-sm leading-6">
+													<span class="font-bold">{activity.name}</span>
+													<p class="text-muted-foreground">{activity.description}</p>
+												</li>
+											{/each}
+										</ul>
+									{/if}
 								</Card.Content>
 							</Card.Root>
 						</Dialog.Trigger>

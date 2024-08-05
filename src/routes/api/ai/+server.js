@@ -40,7 +40,6 @@ export const POST = async ({ request }) => {
 				`Por favor sugiere un itinerario que se adapte a nuestras preferencias, gustos y presupuesto.`,
 			schema: aiSchema
 		});
-
 		return json(object);
 	} catch (error) {
 		if (TypeValidationError.isTypeValidationError(error)) {
