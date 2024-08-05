@@ -89,7 +89,7 @@
 				>
 			</Card.Header>
 			<Card.Content class="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2">
-				{#each tripData.data.days as day}
+				{#each tripData.data.days  || [] as day}
 					<Dialog.Root openFocus={null}>
 						<Dialog.Trigger class="text-left">
 							<Card.Root
