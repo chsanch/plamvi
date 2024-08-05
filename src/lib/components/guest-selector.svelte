@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Counter from '$lib/components/counter.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { Icons } from '$lib/config/icons';
 	import type { GuestSelectorProps } from '$lib/types';
 	import { cn } from '$lib/utils/ui';
@@ -73,14 +72,9 @@
 	<DropdownMenu.Content>
 		<DropdownMenu.Group>
 			<DropdownMenu.Item class="flex items-center gap-2 hover:!bg-transparent">
-				<Tooltip.Root openDelay={150}>
-					<Tooltip.Trigger asChild>
-						<span class="cursor-default">
-							<Icons.adult class="h-4 w-4" />
-						</span>
-					</Tooltip.Trigger>
-					<Tooltip.Content>Adultos</Tooltip.Content>
-				</Tooltip.Root>
+				<span class="cursor-default hover:text-primary" title="Adultos">
+					<Icons.adult class="h-4 w-4" />
+				</span>
 				<Counter
 					initialCount={guests.adults}
 					onChange={(event) => handleCounterChange('adults', event)}
@@ -88,14 +82,9 @@
 			</DropdownMenu.Item>
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item class="flex items-center gap-2 hover:!bg-transparent">
-				<Tooltip.Root openDelay={150}>
-					<Tooltip.Trigger asChild>
-						<span class="cursor-default">
-							<Icons.baby class="h-4 w-4" />
-						</span>
-					</Tooltip.Trigger>
-					<Tooltip.Content>Niños</Tooltip.Content>
-				</Tooltip.Root>
+				<span class="cursor-default hover:text-primary" title="Niños">
+					<Icons.baby class="h-4 w-4" />
+				</span>
 				<Counter
 					initialCount={guests.kids}
 					onChange={(event) => handleCounterChange('kids', event)}
@@ -103,14 +92,9 @@
 			</DropdownMenu.Item>
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item class="flex items-center gap-2 hover:!bg-transparent">
-				<Tooltip.Root openDelay={150}>
-					<Tooltip.Trigger asChild>
-						<span class="cursor-default">
-							<Icons.pet class="h-4 w-4" />
-						</span>
-					</Tooltip.Trigger>
-					<Tooltip.Content>Mascotas</Tooltip.Content>
-				</Tooltip.Root>
+				<span class="cursor-default hover:text-primary" title="Mascotas">
+					<Icons.pet class="h-4 w-4" />
+				</span>
 				<Counter
 					initialCount={guests.pets}
 					onChange={(event) => handleCounterChange('pets', event)}
