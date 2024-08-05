@@ -121,7 +121,7 @@
 								<Dialog.Close></Dialog.Close>
 								<Dialog.Description>
 									<ul class="flex flex-col gap-y-2">
-										{#each day.activities as activity}
+										{#each day.activities || [] as activity}
 											<li class="text-sm leading-6">
 												<span class="font-bold">{activity.name}</span>:
 												<span class="text-muted-foreground">{activity.description}</span>
