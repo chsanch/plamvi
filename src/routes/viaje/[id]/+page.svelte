@@ -102,7 +102,7 @@
 								<Card.Content>
 									<p class="text-sm text-muted-foreground">Resumen:</p>
 									<ul class="pl-2">
-										{#each day.activities as activity}
+{#each tripData.data.days  || [] as day}
 											<li class="text-sm leading-6">
 												<span class="font-bold">{activity.name}</span>
 												<p class="text-muted-foreground">{activity.description}</p>
