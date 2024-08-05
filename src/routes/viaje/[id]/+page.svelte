@@ -7,6 +7,7 @@
 	import * as Card from '$lib/components/ui/card';
 	import * as Dialog from '$lib/components/ui/dialog';
 
+	import Error from '$lib/components/error.svelte';
 	import fetchTrip from '$lib/fetch-trip.svelte';
 	import { getModelContext } from '$lib/state/model.svelte';
 	import { getTripContext } from '$lib/state/trip.svelte';
@@ -25,9 +26,9 @@
 {#if tripData.isLoading}
 	<TripSkeleton />
 {:else if tripData.error.type}
-	<p>Error: {tripData.error.message}</p>
+	<Error message={tripData.error.message} backRoute="/viaje" />
 {:else if tripData.data}
-	<main class="w-full space-y-4 md:container">
+	<main class="container w-full space-y-4 p-4 md:container md:px-8 md:py-4">
 		<div class="grid grid-cols-5 gap-2">
 			<div class="col-span-5 h-full md:col-span-2">
 				<Card.Root class="flex h-full flex-col justify-between">
