@@ -1,32 +1,8 @@
 import { JSONParseError, TypeValidationError, generateObject } from 'ai';
 
 import { aiSchema } from '$lib/schemas';
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
-import { createOpenAI } from '@ai-sdk/openai';
+import { getModelClient } from '$lib/utils/ai';
 import { json } from '@sveltejs/kit';
-
-const GPT_MODELS = ['gpt-4o', 'gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo'];
-const GEMINI_MODELS = [
-	'models/gemini-1.5-flash-latest',
-	'models/gemini-1.5-pro-latest',
-	'models/gemini-pro'
-];
-
-/** @param { import('$lib/types').AiModel } model*/
-const getModelClient = async (model) => {
-	if (GPT_MODELS.includes(model.name)) {
-		return createOpenAI({
-			apiKey: model.apiKey
-		});
-	}
-
-	if (GEMINI_MODELS.includes(model.name)) {
-		return createGoogleGenerativeAI({
-			apiKey: model.apiKey
-		});
-	}
-	return null;
-};
 
 /** @type {import('./$types').RequestHandler} */
 export const POST = async ({ request }) => {

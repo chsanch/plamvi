@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { toast } from 'svelte-sonner';
+	import { generateText } from 'ai';
 
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
@@ -9,11 +11,30 @@
 	import { Icons } from '$lib/config/icons';
 	import { aiModelSchema } from '$lib/schemas';
 	import { getModelContext } from '$lib/state/model.svelte';
-	import type { SuperValidatedModelFormSchema } from '$lib/types';
+	import type { AiModel, SuperValidatedModelFormSchema } from '$lib/types';
+	import { getModelClient } from '$lib/utils/ai';
+	import type { OpenAIProvider } from '@ai-sdk/openai';
+	import type { GoogleGenerativeAIProvider } from '@ai-sdk/google';
 
 	const { data }: { data: SuperValidatedModelFormSchema } = $props();
 
 	const model = getModelContext();
+
+	const validateApiKey = async (model: Pick<AiModel, 'name' | 'apiKey'>) => {
+		let isValid: boolean = false;
+		const aiModel = await getModelClient(model) as OpenAIProvider | GoogleGenerativeAIProvider;
+		try {
+			await generateText({
+				model: aiModel(model.name),
+				prompt: 'Testing'
+			});
+			isValid = true
+		} catch (error) {
+			isValid = false;
+			toast.error('API Key inválida', { description: 'Por favor, introduce una API Key válida' });
+		}
+		return !isValid;
+	};
 
 	let isDisabled: boolean = $state(false),
 		inputPlaceholder: string = $state('');
@@ -21,6 +42,15 @@
 	const form = superForm(data, {
 		applyAction: false,
 		validators: zodClient(aiModelSchema),
+		onSubmit: async ({ cancel, formData }) => {
+			if (
+				await validateApiKey({
+					name: formData.get('name') as string,
+					apiKey: formData.get('apiKey') as string
+				})
+			)
+				cancel();
+		},
 		onUpdated: ({ form }) => {
 			if (form.valid) {
 				model.add(form.data.name, form.data.label, form.data.apiKey);
