@@ -90,7 +90,7 @@
 				>
 			</Card.Header>
 			<Card.Content class="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2">
-				{#each tripData.data.days as day}
+				{#each tripData.data.days || [] as day}
 					<Dialog.Root openFocus={null}>
 						<Dialog.Trigger class="text-left">
 							<Card.Root
@@ -103,7 +103,7 @@
 								<Card.Content>
 									<p class="text-sm text-muted-foreground">Resumen:</p>
 									<ul class="pl-2">
-										{#each day.activities as activity}
+										{#each day.activities || [] as activity}
 											<li class="text-sm leading-6">
 												<span class="font-bold">{activity.name}</span>
 												<p class="text-muted-foreground">{activity.description}</p>
@@ -116,13 +116,13 @@
 						<Dialog.Content class="max-w-3xl px-8">
 							<Dialog.Header>
 								<Dialog.Title class="mb-4 flex flex-col gap-y-1">
-									<h1>Viaje a {trip.general_info.destination}: Día {day.date}</h1>
+									<h1>Viaje a {tripData.data.general_info.destination}: Día {day.date}</h1>
 									<span class="text-sm text-muted-foreground">{day.description}</span>
 								</Dialog.Title>
 								<Dialog.Close></Dialog.Close>
 								<Dialog.Description>
 									<ul class="flex flex-col gap-y-2">
-										{#each day.activities as activity}
+										{#each day.activities || [] as activity}
 											<li class="text-sm leading-6">
 												<span class="font-bold">{activity.name}</span>:
 												<span class="text-muted-foreground">{activity.description}</span>
