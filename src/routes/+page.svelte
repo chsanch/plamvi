@@ -11,17 +11,26 @@
 			>Selecciona el tipo de IA con el que deseas realizar el itinerario e introduce el destino y
 			los ajustes que quieras para personalizarlo. Clica en "Viaje" para empezar y ¡Buen viaje!</span
 		>
-		
-		<span class="w-full text-sm text-muted-foreground sm:w-1/2 sm:text-xl"> Si quieres ver como funciona, aquí tienes un video:
-		<Dialog.Root>
-			<Dialog.Trigger class="font-bold underline">Ver Demo</Dialog.Trigger>
-			<Dialog.Content class="w-full max-w-5xl">
-				<video controls src="/demo_plamvi.mp4">
-					<track kind="captions" />
-				</video>
-			</Dialog.Content>
-		</Dialog.Root>
-			</span>
+
+		<span class="w-full text-sm text-muted-foreground sm:w-1/2 sm:text-xl">
+			Si quieres ver como funciona, aquí tienes un video:
+			<Dialog.Root>
+				<Dialog.Trigger class="font-bold underline">Demo OpenAI,</Dialog.Trigger>
+				<Dialog.Content class="w-full max-w-5xl">
+					<video controls src="/demo_plamvi.mp4">
+						<track kind="captions" />
+					</video>
+				</Dialog.Content>
+			</Dialog.Root>
+			<Dialog.Root>
+				<Dialog.Trigger class="font-bold underline">Demo Gemini</Dialog.Trigger>
+				<Dialog.Content class="w-full max-w-5xl">
+					<video controls src="/demo_gemini.mp4">
+						<track kind="captions" />
+					</video>
+				</Dialog.Content>
+			</Dialog.Root>
+		</span>
 	</div>
 
 	<div>
