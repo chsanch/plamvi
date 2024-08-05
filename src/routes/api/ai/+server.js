@@ -53,7 +53,7 @@ export const POST = async ({ request }) => {
 				`- Si es posible, proporcione el costo de cada parada y enlaces para obtener más información. ` +
 				`proporciona también información de sitios donde alojarse y que esté relacionado con el itinerario, para facilitar las visitas. ` +
 				`Asegúrate de que la información sea relevante para el destino y las fechas proporcionadas. ` +
-				`Asegúrate de que los links sean válidos. ` +
+				`Asegúrate de que los links de los hoteles y la información de interés sean válidos y que estén disponibles en tu respuesta. ` +
 				`La lista debe basarse en diferentes gustos y presupuestos para adaptarse al usuario.`,
 			prompt:
 				`Destino: ${trip.destination}` +

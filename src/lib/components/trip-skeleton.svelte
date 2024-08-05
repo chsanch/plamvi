@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="h-[calc(100% - 4rem)] relative flex w-full flex-col gap-y-4 overflow-hidden md:container"
+	class="h-[calc(100% - 4rem)] relative flex w-full flex-col gap-y-4 overflow-hidden p-4 md:container md:px-8 md:py-4"
 >
 	<div class="grid grid-cols-5 gap-4">
 		<Skeleton class="col-span-2 h-[300px] w-full rounded-xl" />
