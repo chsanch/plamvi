@@ -25,6 +25,7 @@ const getModelClient = async (model) => {
 			apiKey: model.apiKey
 		});
 	}
+
 	return null;
 };
 
@@ -40,7 +41,6 @@ export const POST = async ({ request }) => {
 
 	try {
 		const { object } = await generateObject({
-			// model: openai('gpt-4-turbo'),
 			model: aiModel(model.name),
 			system:
 				`Eres un asistente de viajes. Ayudas a planificar itinerarios de viaje. ` +
@@ -53,7 +53,7 @@ export const POST = async ({ request }) => {
 				`- Si es posible, proporcione el costo de cada parada y enlaces para obtener más información. ` +
 				`proporciona también información de sitios donde alojarse y que esté relacionado con el itinerario, para facilitar las visitas. ` +
 				`Asegúrate de que la información sea relevante para el destino y las fechas proporcionadas. ` +
-				`Asegúrate de que los links sean válidos. ` +
+				`Asegúrate de que los links de los hoteles y la información de interés sean válidos y que estén disponibles en tu respuesta. ` +
 				`La lista debe basarse en diferentes gustos y presupuestos para adaptarse al usuario.`,
 			prompt:
 				`Destino: ${trip.destination}` +
@@ -65,9 +65,9 @@ export const POST = async ({ request }) => {
 				`Por favor sugiere un itinerario que se adapte a nuestras preferencias, gustos y presupuesto.`,
 			schema: aiSchema
 		});
+
 		return json(object);
 	} catch (error) {
-		console.log(error);
 		if (TypeValidationError.isTypeValidationError(error)) {
 			return json({ error: { type: 'validation-error', message: error.value } });
 		} else if (JSONParseError.isJSONParseError(error)) {
