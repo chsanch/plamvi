@@ -7,7 +7,7 @@
 	const { message, backRoute }: ErrorProps = $props();
 </script>
 
-<div class="flex w-full flex-col items-start justify-start gap-y-4">
+<div class="flex w-full flex-col items-start justify-start gap-y-4 p-4 md:px-8 md:py-4">
 	<div class="group mt-4 cursor-pointer hover:text-primary">
 		<a class="flex items-center gap-x-1" href={backRoute}>
 			<Icons.chevronLeft class="h-4 w-4" />
