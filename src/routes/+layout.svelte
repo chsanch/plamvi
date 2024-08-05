@@ -11,6 +11,6 @@
 </script>
 
 <ApplicationHeader />
-<main class="mt-16 flex flex-col items-center p-4 md:px-8 md:py-4">
+<main class="mt-16 flex flex-col items-center">
 	{@render children()}
 </main>
