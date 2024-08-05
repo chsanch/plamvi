@@ -13,7 +13,7 @@
 		>
 
 		<span class="w-full text-sm text-muted-foreground sm:w-1/2 sm:text-xl">
-			Si quieres ver como funciona, aquí tienes un video:
+			Si quieres ver como funciona, aquí tienes algunos videos:
 			<Dialog.Root>
 				<Dialog.Trigger class="font-bold underline">Demo OpenAI,</Dialog.Trigger>
 				<Dialog.Content class="w-full max-w-5xl">
